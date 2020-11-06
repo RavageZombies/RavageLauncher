@@ -38,7 +38,7 @@ public class LaunchManager
         }
         final int minRam = 512;
         String ramValue = AppProperties.properties.getProperty("ram", "2");
-        launcher.getVmArgs().addAll(Arrays.<String>asList("-Xms512M", "-Xmx" + (int)(Integer.parseInt(ramValue) * 1000.0) + "M"));
+        launcher.getVmArgs().addAll(Arrays.<String>asList("-Xms512M", "-Xmx" + (int)(Integer.parseInt(ramValue) * 1024.0) + "M"));
         try {
             launcher.launch();
         }

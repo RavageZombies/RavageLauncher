@@ -41,7 +41,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
 
-        this.launcher = new BaseLauncher("Ravage", "1.12.2", "14.23.5.2847", "https://drawlife.eu/app/webroot/326598/", false);
+        this.launcher = new BaseLauncher("Ravage", "1.12.2", "14.23.5.2847", "https://drawlife.eu/app/webroot/326598/update/", false);
         this.launcher.getUpdateManager().enableCustomJre("https://drawlife.eu/app/webroot/326598/JRE.zip", "0ac70223f00b0be4f33846bc6d3d6114");
         this.updateManager = launcher.getUpdateManager();
         this.launchManager = launcher.getLaunchManager();

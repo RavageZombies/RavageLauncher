@@ -30,9 +30,6 @@ public class MainController {
     @FXML
     private OptionsController optionsPaneController;
 
-
-
-
     @Getter @Setter
     private Node loginNode;
     @Getter @Setter
@@ -58,6 +55,10 @@ public class MainController {
             } else {
                 this.onAuthCompleted();
             }
+
+
+
+
 
         } catch (IOException e) {
             e.printStackTrace();

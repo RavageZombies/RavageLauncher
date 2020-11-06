@@ -48,7 +48,7 @@ public abstract class GameType
             @Override
             public ArrayList<String> getLaunchArgs(BaseLauncher launcher) {
                 ArrayList<String> arguments = new ArrayList<String>();
-                arguments.add("--username=" + Main.account.getUsername());
+                arguments.add("--username=" + Main.account.getDisplayName());
                 arguments.add("--accessToken");
                 arguments.add(Main.account.getAccessToken());
                 arguments.add("--version");
@@ -81,7 +81,7 @@ public abstract class GameType
             @Override
             public ArrayList<String> getLaunchArgs(BaseLauncher launcher) {
                 ArrayList<String> arguments = new ArrayList<String>();
-                arguments.add("--username=" + Main.account.getUsername());
+                arguments.add("--username=" + Main.account.getDisplayName());
                 arguments.add("--accessToken");
                 arguments.add(Main.account.getAccessToken());
                 arguments.add("--version");
@@ -116,7 +116,7 @@ public abstract class GameType
             @Override
             public ArrayList<String> getLaunchArgs(BaseLauncher launcher) {
                 ArrayList<String> arguments = new ArrayList<String>();
-                arguments.add("--username=" + Main.account.getUsername());
+                arguments.add("--username=" + Main.account.getDisplayName());
                 arguments.add("--accessToken");
                 arguments.add(Main.account.getAccessToken());
                 arguments.add("--version");
@@ -160,7 +160,7 @@ public abstract class GameType
             @Override
             public ArrayList<String> getLaunchArgs(BaseLauncher launcher) {
                 ArrayList<String> arguments = new ArrayList<String>();
-                arguments.add("--username=" +Main.account.getUsername());
+                arguments.add("--username=" +Main.account.getDisplayName());
                 arguments.add("--accessToken");
                 arguments.add(Main.account.getAccessToken());
                 arguments.add("--version");

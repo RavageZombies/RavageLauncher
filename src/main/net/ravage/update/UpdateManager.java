@@ -73,24 +73,24 @@ public class UpdateManager
         }
         return this.version;
     }
-    
+
     public void updateAll() {
         this.isDownloading = true;
         this.downloadJava();
         if (!this.launcher.isMCP()) {
             this.downloadMc();
         }
+
         try {
             this.updater = new EazyUpdater(this.launcher.getUpdateServerUrl(), this.launcher.MINECRAFT_DIR);
             this.updater.startDownload(this);
-            System.out.println(this.updater);
+        } catch (IOException var2) {
+            var2.printStackTrace();
         }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
+
         this.isDownloading = false;
     }
-    
+
     public void downloadMc() {
         this.isDownloadingMc = true;
         this.updateMessage = "Verifying assets...";
@@ -99,7 +99,7 @@ public class UpdateManager
         this.setGame(version.update());
         this.isDownloadingMc = false;
     }
-    
+
     public void downloadJava() {
         this.updateMessage = "Java verification";
         RavageUtils.sendMessageInConsole("V\u00e9rification de votre version de Java...");
@@ -151,18 +151,24 @@ public class UpdateManager
     public boolean isDownloading() {
         return this.isDownloading;
     }
-    
+
     public int getTotalFiles() {
         if (this.isDownloadingMc && this.minecraftVersionDownloader != null) {
             return this.minecraftVersionDownloader.getDownloadManager().filesToDownload.size();
+        } else {
+            return this.updater != null ? this.updater.getTotalFilesToDownload() : 0;
         }
-        return (this.updater != null) ? this.updater.getTotalFilesToDownload() : 0;
     }
-    
+
     public int getDownloadedFiles() {
         if (this.isDownloadingMc && this.minecraftVersionDownloader != null) {
             return this.minecraftVersionDownloader.getDownloadManager().downloadedFile.size();
+        } else {
+            return this.updater != null ? this.updater.getDownloadedFiles() : 0;
         }
-        return (this.updater != null) ? this.updater.getDownloadedFiles() : 0;
+    }
+
+    public EazyUpdater getUpdater() {
+        return updater;
     }
 }

@@ -133,11 +133,6 @@ public class PlayController {
 
         }*/
 
-        if (Main.account != null) {
-            launch();
-        }
-
-
        Thread t = new Thread(new Runnable() {
 
             private Label l;
@@ -152,12 +147,12 @@ public class PlayController {
 
                 boolean flag = true;
                 while (flag) {
-                    if (Main.getLauncher().getUpdateManager().isDownloading()) {
-                        System.out.println("test");
-                        String percent = DownloadManager.crossMult(Main.getLauncher().getUpdateManager().getDownloadedFiles(), Main.getLauncher().getUpdateManager().getTotalFiles(), 100) + "%";
-                        Platform.runLater(() -> {
-                            System.out.println("test2");
-                            l.setText("Téléchargement en cours : " + Main.getLauncher().getUpdateManager().getUpdateMessage() + " (" + percent + " %).");
+
+                    if (Main.getLauncher().getUpdateManager().isDownloading() && Main.getLauncher().getUpdateManager().getDownloadedFiles() != 0) {
+                        int val = (int) (Main.getLauncher().getUpdateManager().getUpdater().getDownloadedBytes() / 1000);
+                        int max = (int) (Main.getLauncher().getUpdateManager().getUpdater().getTotalBytesToDownload() / 1000);
+                         Platform.runLater(() -> {
+                            l.setText("Téléchargement en cours : (" + val * 100 / max + " %).");
                         });
 
                         try {
@@ -165,39 +160,28 @@ public class PlayController {
                         } catch (InterruptedException e) {
                             flag = false;
                         }
+                    } else {
+                        Platform.runLater(() -> {
+                            l.setText(Main.getLauncher().getUpdateManager().getUpdateMessage());
+                        });
+                        try {
+                            Thread.sleep(1000);
+                        } catch (InterruptedException e) {
+                            flag = false;
+                        }
+
                     }
                 }
             }
         }.init(updateLabel));
-
         t.start();
-    }
-
-    private void launch() {
-        System.out.println("test");
         Main.getLauncher().getUpdateManager().updateAll();
-        Main.getLauncher().getLaunchManager().launch();
-        /*try {
-            ExternalLaunchProfile profile;
-            ExternalLauncher mcLauncher;
-            AuthInfos authInfos = new AuthInfos(Main.account.getDisplayName(), Main.account.getAccessToken(),
-                    Main.account.getUUID());
-
-            if (!AppProperties.properties.getProperty("beta", "false").equals("true"))
-                profile = MinecraftLauncher.createExternalProfile(Main.INFOS, GameFolder.BASIC, authInfos);
-            else
-                profile = MinecraftLauncher.createExternalProfile(Main.BETA_INFOS, GameFolder.BASIC, authInfos);
-
-            String ram = AppProperties.properties.getProperty("ram", "2");
-            profile.getVmArgs().addAll(Arrays.asList("-Xms" + ram + "G", "-Xmx" + ram + "G"));
-            mcLauncher = new ExternalLauncher(profile);
-            mcLauncher.launch();
-
-            System.exit(0);
-        } catch (LaunchException exc) {
-            exc.printStackTrace();
-        }*/
+       if (Main.account != null) {
+           Main.getLauncher().getLaunchManager().launch();
+        }
+//   if (!AppProperties.properties.getProperty("beta", "false").equals("true"))
     }
+
 
     private void checkLauncherUpdate() {
         new Thread(() -> {
