@@ -6,9 +6,9 @@
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
-<?import me.gledoussal.ui.*?>
+<?import net.ravage.ui.*?>
 
-<Pane prefHeight="737" prefWidth="1200" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="me.gledoussal.controllers.PlayController">
+<Pane prefHeight="737" prefWidth="1200" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.ravage.controllers.PlayController">
     <ImageView fitHeight="64.0" layoutX="100.0" layoutY="99.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
         <Image url="@../images/logo.png" />
     </ImageView>

@@ -6,9 +6,9 @@
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
-<?import me.gledoussal.ui.*?>
+<?import net.ravage.ui.*?>
 
-<Pane prefHeight="737" prefWidth="1200" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="me.gledoussal.controllers.LoginController">
+<Pane prefHeight="737" prefWidth="1200" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.ravage.controllers.LoginController">
     <Rectangle height="200.0" layoutY="537.0" width="1200.0">
         <fill>
             <LinearGradient endX="0.5343511313882493" endY="0.8969465585155342" startX="0.5343511541381137">
